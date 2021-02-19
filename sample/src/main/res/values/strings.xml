@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">sample</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</string>
-    <string name="formatted_text">Number %d</string>
+    <string name="formatted_number">Number %d</string>
+    <string name="fallback">I\'m the fallback.</string>
 </resources>

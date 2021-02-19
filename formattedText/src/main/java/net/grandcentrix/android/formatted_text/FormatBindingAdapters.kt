@@ -15,9 +15,9 @@ fun setFallbackValue(textView: TextView, fallbackValue: FallbackValue?) {
     if (fallbackValue == null) {
         textView.text = null
     } else if (fallbackValue.value is String && fallbackValue.value.isBlank()) {
-        textView.text = fallbackValue.resolveFallback(textView.context)
+        textView.text = fallbackValue.resolveString(textView.context)
     } else {
         textView.text =
-            fallbackValue.value?.toString() ?: fallbackValue.resolveFallback(textView.context)
+            fallbackValue.value?.toString() ?: fallbackValue.resolveString(textView.context)
     }
 }

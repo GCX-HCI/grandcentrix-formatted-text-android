@@ -1,7 +1,7 @@
 
 # formatted-text  
   
-![Publish Artifact](https://github.com/grandcentrix/grandcentrix-formatted-text/workflows/Publish%20Artifact/badge.svg)  
+![Publish Artifact](https://github.com/grandcentrix/android-formatted-text/workflows/Publish%20Artifact/badge.svg)  
   
 This Library introduce a FormattingText and a FallbackValue to use language independent texts in the application view models.   
   
