@@ -1,5 +1,6 @@
 package net.grandcentrix.android.util.formatted_text
 
+import net.grandcentrix.android.formatted_text.formatWithFallback
 import net.grandcentrix.android.formatted_text.sample.R
 
 /**

@@ -1,13 +1,16 @@
-package net.grandcentrix.android.util.formatted_text
+package net.grandcentrix.android.formatted_text
 
 import android.content.Context
 import androidx.annotation.StringRes
 import java.io.Serializable
 
 /**
- * A formatted text by [java.util.Formatter] and [java.lang.String.format].
+ * Creates a new [FormattedText] with given [stringResId] and [arguments].
+ * @param [resId] Resource id for the format string
+ * @param [arguments] The format arguments that will be used for
+ *                   substitution.
  */
-class FormattedText(@StringRes val string: Int, vararg val arguments: Any?) : Serializable {
+class FormattedText(@StringRes val stringResId: Int, vararg val arguments: Any?) : Serializable {
 
     /**
      * Returns a localized formatted string from the application's package's
@@ -15,29 +18,30 @@ class FormattedText(@StringRes val string: Int, vararg val arguments: Any?) : Se
      * [java.util.Formatter] and [java.lang.String.format].
      *
      * @param context Context of the application
+     * @see [Context.getString]
      * @return The string data associated with the resource, formatted and
      *         stripped of styled text information.
      */
-    fun resolveString(context: Context) = context.getString(string, *arguments)
+    fun resolveString(context: Context) = context.getString(stringResId, *arguments)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is FormattedText) return false
 
-        if (string != other.string) return false
+        if (stringResId != other.stringResId) return false
         if (!arguments.contentEquals(other.arguments)) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = string
+        var result = stringResId
         result = 31 * result + arguments.contentHashCode()
         return result
     }
 
     override fun toString(): String {
-        return "${this::class.java.simpleName}(string = $string, arguments = $arguments)"
+        return "${this::class.java.simpleName}(string = $stringResId, arguments = $arguments)"
     }
 }
 

@@ -3,7 +3,6 @@ package net.grandcentrix.android.formatted_text
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import net.grandcentrix.android.util.formatted_text.FallbackValue
-import net.grandcentrix.android.util.formatted_text.FormattedText
 
 @BindingAdapter("formattedText")
 fun setFormattedText(textView: TextView, formattedText: FormattedText?) {
