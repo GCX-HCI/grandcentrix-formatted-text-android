@@ -1,0 +1,3 @@
+rootProject.name = "FormattedText"
+include ':formattedText'
+include ':sample'
