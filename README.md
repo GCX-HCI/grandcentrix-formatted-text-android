@@ -1,33 +1,97 @@
 
-# formatted-text  
+# FormattedText & FallbackValue
   
 ![Publish Artifact](https://github.com/grandcentrix/android-formatted-text/workflows/Publish%20Artifact/badge.svg)  
   
-This Library introduce a FormattingText and a FallbackValue to use language independent texts in the application view models.   
+This Library introduce a FormattingText and a FallbackValue to use language independetn texts in the application view models.   
   
-## FormattedText & FallbackValue
+## Example
   
-### ViewModel  
-  
+### ViewModel    
 ```kotlin  
 class MyAwesomeViewModel {  
-    var formattedTextWith = 32.formatWithFallback(R.string.formatted_text, R.string.lorem_ipsum)  
-    val fallbackText =  
-        (null as Int).formatWithFallback(R.string.formatted_text, R.string.lorem_ipsum)  
+    private val nullInt: Int? = null  
   
-    val fallbackValue = "a string".withFallback(R.string.lorem_ipsum)  
-    val nullWithFallbackValue = (null as Int).withFallback(R.string.lorem_ipsum)  
+ var formattedNumberWithFallback =  
+        32.formatWithFallback(R.string.formatted_number, R.string.fallback)  
+    val formattedNullNumberWithFallback =  
+        nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)  
+  
+    val valueWithFallback = 32.withFallback(R.string.fallback)  
+    val nullValueWithFallback = nullInt.withFallback(R.string.fallback)  
 }
 ```  
-  
-### Fragment  
-  
+### View Binding  
 ```kotlin  
- Hier kommt das Fragment zeugs hin
+override fun onCreate(savedInstanceState: Bundle?) {  
+    super.onCreate(savedInstanceState)  
+    binding = ActivityViewBindingBinding.inflate(layoutInflater)  
+    setContentView(binding.root)  
+  
+    binding.formattedNumberWithFallback.text =  
+        viewModel.formattedNumberWithFallback.resolveString(this)  
+        
+    binding.formattedNullNumberWithFallback.text =  
+        viewModel.formattedNullNumberWithFallback.resolveString(this)  
+        
+    binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)  
+    
+    binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)  
+}
  ```  
   
-### Databinding  
- 
+### Data Binding 
+#### Activity:
+```kotlin  
+override fun onCreate(savedInstanceState: Bundle?) {  
+    super.onCreate(savedInstanceState)  
+    binding = ActivityDataBindingBinding.inflate(layoutInflater)  
+    setContentView(binding.root)  
+    binding.viewModel = viewModel  
+}
+ ```
+#### Layout:
+```XML   
+ <?xml version="1.0" encoding="utf-8"?>  
+<layout>  
+  
+    <data>  
+        <variable
+	        name="viewModel"
+	        type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />  
+    </data>  
+  
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:app="http://schemas.android.com/apk/res-auto"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical">  
+  
+        <TextView
+	        android:id="@+id/formatted_number_with_fallback"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        app:formattedText="@{viewModel.formattedNumberWithFallback}" />  
+  
+        <TextView
+	        android:id="@+id/formatted_null_number_with_fallback"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        app:formattedText="@{viewModel.formattedNullNumberWithFallback}" /> 
+	    <TextView
+		    android:id="@+id/value_with_fallback"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    app:fallbackValue="@{viewModel.valueWithFallback}" />  
+  
+        <TextView
+	        android:id="@+id/null_value_with_fallback"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        app:fallbackValue="@{viewModel.nullValueWithFallback}" />  
+    </LinearLayout>  
+</layout>
+``` 
 ## Usage  
 The library is available on GitHub Packages.  
   
@@ -35,13 +99,13 @@ In your project main `build.gradle.kts` you need:
   
 ```  
 repositories {  
- maven { url = uri("https://maven.pkg.github.com/grandcentrix/grandcentrix-formatted-text") }}  
+ maven { url = uri("https://maven.pkg.github.com/grandcentrix/android-formatted-text") }}  
 ```  
   
 And in your module `build.gradle.kts`:  
   
 ```  
-implementation("net.grandcentrix.formatted_texteither:android:1.0")  
+implementation("net.grandcentrix.formatted_text:android:1.0")  
 ```  
   
-For the newest version please always check the [Packages](https://github.com/grandcentrix/grandcentrix-kotlin-either/packages/596752) page.
+For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/releases) page.
