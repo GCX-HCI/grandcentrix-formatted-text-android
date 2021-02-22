@@ -1,0 +1,48 @@
+# This workflow publishes a release build of e.g. a library project 
+# to a Maven repository like GitHub Packages using the maven-publish plugin
+# It is triggered by the creation of a GitHub release
+# Please note that the KeyStore credentials have to be created as secrets in your project
+# e.g. by using the GitHub CLI tool (https://cli.github.com/manual/gh_secret_set)
+# For more information about how to configure your project to use this, see:
+# https://wiki.gcxi.de/display/TENG/Using+GitHub+Packages+for+Android+Projects
+
+name: Publish Artifact
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  publish:
+    name: Publish Artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout project files
+        uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache gradle wrapper and packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle
+      - name: Build release
+        run: ./gradlew assembleRelease
+        timeout-minutes: 10
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          ALIAS_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
+      - name: Publish package
+        run: ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
