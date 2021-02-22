@@ -60,7 +60,6 @@ class BindingAdapterTest {
     fun `when set fallback with blank text should set fallback as text`() {
         val fallbackValue = FallbackValue(" ", fallbackId)
         setFallbackValue(mockTextView, fallbackValue)
-        verify(exactly = 1) { fallbackValue.resolveString(mockContext) }
         verify(exactly = 1) { mockTextView.text = fallbackText }
     }
 }
