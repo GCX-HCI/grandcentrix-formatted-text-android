@@ -1,0 +1,88 @@
+# This workflow checks if the project can be built correctly and runs its unit tests and linter
+# After the tests have run it prints a report in the logs and uploads a report as workflow artifact
+# This workflow only runs if a Pull Request is (re-)opened and it is not a draft 
+# or after a push to develop or the default branch
+# For more information about best practices, see:
+# https://wiki.gcxi.de/display/TENG/GitHub+Actions%3A+Best+Practices
+
+name: Pull Request
+
+on:
+  push:
+    branches: [ develop, develop ]
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+    branches: [ develop, develop ]
+
+jobs:
+  cancelPreviousRuns:
+    name: Cancel previous runs
+    if: github.event_name == 'push' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    name: Build all variants
+    if: github.event_name == 'push' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project files
+        uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache gradle wrapper and packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle
+      - name: Build all variants
+        run: ./gradlew assemble
+        timeout-minutes: 10
+
+  test:
+    name: Run Unit Tests & Lint
+    if: github.event_name == 'push' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project files
+        uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache gradle wrapper and packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle
+      - name: Compile tests
+        run: ./gradlew compileDebugUnitTests
+      - name: Run tests
+        run: ./gradlew testDebugUnitTest --continue
+        continue-on-error: true
+        timeout-minutes: 10
+      - name: Run lint
+        run: ./gradlew lintDebug
+        continue-on-error: true
+        timeout-minutes: 5
+      - name: Create test report
+        uses: asadmansr/android-test-report-action@v1.2.0
+      - name: Upload test and lint reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: "**/build/reports/*"
