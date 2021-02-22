@@ -7,6 +7,7 @@ This library introduce a FormattingText and a FallbackValue to use language inde
 ## Example  
  
 ### View model
+
 ```kotlin
 class MyAwesomeViewModel {    
     private val nullInt: Int? = null    
@@ -32,26 +33,31 @@ override fun onCreate(savedInstanceState: Bundle?) {
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)    
       
 	binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
-}  
- ```
+}
+```
+
 ### Data binding
+
 #### Activity
+
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {    
     super.onCreate(savedInstanceState)    
     binding = ActivityDataBindingBinding.inflate(layoutInflater)    
     setContentView(binding.root)    
-	binding.viewModel = viewModel 
-}  
- ```
+    binding.viewModel = viewModel 
+}
+```
+
 #### Layout
+
 ```XML     
 <?xml version="1.0" encoding="utf-8"?>
 <layout>        
     <data>    
         <variable  
-			 name="viewModel"
-			 type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
+	        name="viewModel"
+		    type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
 	</data>    
     
     <LinearLayout
@@ -61,10 +67,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	    android:layout_height="match_parent"
 	    android:orientation="vertical">    
         <TextView  
-			android:id="@+id/formatted_number_with_fallback"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:formattedText="@{viewModel.formattedNumberWithFallback}" />    
+		    android:id="@+id/formatted_number_with_fallback"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    app:formattedText="@{viewModel.formattedNumberWithFallback}" />    
         <TextView
 	        android:id="@+id/formatted_null_number_with_fallback"
 	        android:layout_width="wrap_content"
@@ -83,7 +89,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	</LinearLayout>
 </layout>  
 ```
+
 ## Usage
+
 The library is available on GitHub Packages.    
     
 In your project main `build.gradle` you need:    
