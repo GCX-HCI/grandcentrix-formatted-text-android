@@ -109,7 +109,7 @@ Note: Add your github user and token to your `~/.gradle/gradle.properties` file.
 And in your module `build.gradle`:    
     
 ```
-implementation("net.grandcentrix.formatted_text:android:1.0")
+implementation("net.grandcentrix.formatted-text:android:1.0")
 ```    
 
  For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/packages) page.
