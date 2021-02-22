@@ -70,23 +70,23 @@ override fun onCreate(savedInstanceState: Bundle?) {
             android:id="@+id/formatted_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNumberWithFallback}" />    
+            app:formattedText="@{viewModel.formattedNumberWithFallback}" />
         <TextView
-	        android:id="@+id/formatted_null_number_with_fallback"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        app:formattedText="@{viewModel.formattedNullNumberWithFallback}" />     
+            android:id="@+id/formatted_null_number_with_fallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:formattedText="@{viewModel.formattedNullNumberWithFallback}" />
         <TextView
-	        android:id="@+id/value_with_fallback"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        app:fallbackValue="@{viewModel.valueWithFallback}" />    
+            android:id="@+id/value_with_fallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fallbackValue="@{viewModel.valueWithFallback}" />
         <TextView
             android:id="@+id/null_value_with_fallback"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        app:fallbackValue="@{viewModel.nullValueWithFallback}" />
-	</LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fallbackValue="@{viewModel.nullValueWithFallback}" />
+    </LinearLayout>
 </layout>  
 ```
 
