@@ -5,7 +5,6 @@ import android.widget.TextView
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import net.grandcentrix.android.util.formatted_text.FallbackValue
 import org.junit.jupiter.api.Test
 
 class BindingAdapterTest {

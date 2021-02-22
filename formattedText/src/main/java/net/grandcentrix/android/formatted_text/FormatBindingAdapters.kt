@@ -2,7 +2,6 @@ package net.grandcentrix.android.formatted_text
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import net.grandcentrix.android.util.formatted_text.FallbackValue
 
 /**
  * If the method is called with null the text view's text is set with null.

@@ -1,4 +1,4 @@
-package net.grandcentrix.android.util.formatted_text
+package net.grandcentrix.android.formatted_text
 
 import android.content.Context
 import androidx.annotation.StringRes

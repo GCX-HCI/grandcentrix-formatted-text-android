@@ -9,15 +9,12 @@ This library introduce a FormattingText and a FallbackValue to use language inde
 ### View model
 ```kotlin
 class MyAwesomeViewModel {    
- private val nullInt: Int? = null    
+    private val nullInt: Int? = null    
     
- var formattedNumberWithFallback =    
-        32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-  val formattedNullNumberWithFallback =    
-        nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    
-  val valueWithFallback = 32.withFallback(R.string.fallback)
-  val nullValueWithFallback = nullInt.withFallback(R.string.fallback) }  
+    var formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
+    val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
+    val valueWithFallback = 32.withFallback(R.string.fallback)
+    val nullValueWithFallback = nullInt.withFallback(R.string.fallback) }  
 ``` 
 
 ### View binding
@@ -28,11 +25,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
     binding = ActivityViewBindingBinding.inflate(layoutInflater)    
     setContentView(binding.root)    
     
-    binding.formattedNumberWithFallback.text =    
-        viewModel.formattedNumberWithFallback.resolveString(this)    
+    binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
           
-    binding.formattedNullNumberWithFallback.text =    
-        viewModel.formattedNullNumberWithFallback.resolveString(this)    
+    binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
           
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)    
       
@@ -81,10 +76,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	        android:layout_height="wrap_content"
 	        app:fallbackValue="@{viewModel.valueWithFallback}" />    
         <TextView
-        android:id="@+id/null_value_with_fallback"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    app:fallbackValue="@{viewModel.nullValueWithFallback}" />
+            android:id="@+id/null_value_with_fallback"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        app:fallbackValue="@{viewModel.nullValueWithFallback}" />
 	</LinearLayout>
 </layout>  
 ```
@@ -93,11 +88,17 @@ The library is available on GitHub Packages.
     
 In your project main `build.gradle` you need:    
 ```
-repositories {    
-	maven { url = uri("https://maven.pkg.github.com/grandcentrix/android-formatted-text")}
+maven {
+    url 'https://maven.pkg.github.com/grandcentrix/android-formatted-text'
+    credentials {
+        username = project.findProperty("github.user") ?: System.getenv("GITHUB_ACTOR")
+        password = project.findProperty("github.token") ?: System.getenv("GITHUB_TOKEN")
+    }
 }
-```    
-And in your module `build.gradle.kts`:    
+```
+Note: Add your github user and token to your `~/.gradle/gradle.properties` file.    
+
+And in your module `build.gradle`:    
     
 ```
 implementation("net.grandcentrix.formatted_text:android:1.0")

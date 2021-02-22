@@ -2,6 +2,7 @@ package net.grandcentrix.android.util.formatted_text
 
 import net.grandcentrix.android.formatted_text.formatWithFallback
 import net.grandcentrix.android.formatted_text.sample.R
+import net.grandcentrix.android.formatted_text.withFallback
 
 /**
  * A simple view model witch demonstrate the [FormattedText] and [FallbackValue].

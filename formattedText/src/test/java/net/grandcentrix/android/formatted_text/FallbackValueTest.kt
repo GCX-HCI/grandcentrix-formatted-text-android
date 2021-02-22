@@ -4,8 +4,6 @@ import android.content.Context
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import net.grandcentrix.android.util.formatted_text.FallbackValue
-import net.grandcentrix.android.util.formatted_text.withFallback
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
