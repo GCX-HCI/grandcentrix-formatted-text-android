@@ -103,4 +103,4 @@ And in your module `build.gradle.kts`:
 implementation("net.grandcentrix.formatted_text:android:1.0")
 ```    
 
- For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/releases) page.
+ For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/packages) page.
