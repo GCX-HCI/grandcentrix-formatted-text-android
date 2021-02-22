@@ -55,9 +55,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
 <?xml version="1.0" encoding="utf-8"?>
 <layout>        
     <data>    
-        <variable  
-	        name="viewModel"
-		    type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
+        <variable
+            name="viewModel"
+            type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
 	</data>    
     
     <LinearLayout
@@ -65,12 +65,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	    xmlns:app="http://schemas.android.com/apk/res-auto"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:orientation="vertical">    
-        <TextView  
-		    android:id="@+id/formatted_number_with_fallback"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    app:formattedText="@{viewModel.formattedNumberWithFallback}" />    
+	    android:orientation="vertical">
+        <TextView
+            android:id="@+id/formatted_number_with_fallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:formattedText="@{viewModel.formattedNumberWithFallback}" />    
         <TextView
 	        android:id="@+id/formatted_null_number_with_fallback"
 	        android:layout_width="wrap_content"
