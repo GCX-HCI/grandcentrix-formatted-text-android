@@ -2,7 +2,7 @@
 # FormattedText & FallbackValue  
   ![Publish Artifact](https://github.com/grandcentrix/android-formatted-text/workflows/Publish%20Artifact/badge.svg)    
     
-This library introduce a FormattingText and a FallbackValue to use language independetn texts in the application view models.     
+This library introduces a FormattingText and a FallbackValue to use language independent texts in the application view models.     
     
 ## Example  
  
