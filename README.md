@@ -30,9 +30,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
           
     binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
           
-    binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)    
-      
-	binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
+    binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
+
+    binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
 }
 ```
 
