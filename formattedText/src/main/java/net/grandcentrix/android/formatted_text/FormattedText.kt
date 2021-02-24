@@ -51,13 +51,13 @@ class FormattedText(@StringRes val stringResId: Int, vararg val arguments: Any?)
  * {@link java.util.Formatter} and {@link java.lang.String#format}.
  *
  * @param formatString Resource id for the format string
- * @param stringIfNull Resource id with should use if [this] is null.
+ * @param stringResIfNull Resource id with should use if [this] is null.
  * @return The string data associated with the resource, formatted and
  *         stripped of styled text information.
  */
-fun Any?.formatWithFallback(@StringRes formatString: Int, @StringRes stringIfNull: Int) =
+fun Any?.formatWithFallback(@StringRes formatString: Int, @StringRes stringResIfNull: Int) =
     when (this) {
-        null -> FormattedText(stringIfNull)
+        null -> FormattedText(stringResIfNull)
         else -> FormattedText(formatString, this)
     }
 
