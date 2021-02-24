@@ -30,12 +30,12 @@
             android:id="@+id/value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.valueWithFallback}" />
+            android:text="@{viewModel.valueWithFallback}" />
 
         <TextView
             android:id="@+id/null_value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.nullValueWithFallback}" />
+            android:text="@{viewModel.nullValueWithFallback}" />
     </LinearLayout>
 </layout>
