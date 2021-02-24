@@ -58,7 +58,7 @@ afterEvaluate {
             maven(MavenPublication) {
                 from components.release
 
-                groupId = 'net.grandcentrix.android.formatted-text'
+                groupId = 'net.grandcentrix.formatted-text'
                 artifactId = "android"
                 version = '1.0.0'
             }

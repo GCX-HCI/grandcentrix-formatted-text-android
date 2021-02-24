@@ -9,10 +9,10 @@ name: Pull Request
 
 on:
   push:
-    branches: [ develop, develop ]
+    branches: [ develop, master ]
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
-    branches: [ develop, develop ]
+    branches: [ develop, master ]
 
 jobs:
   cancelPreviousRuns:
