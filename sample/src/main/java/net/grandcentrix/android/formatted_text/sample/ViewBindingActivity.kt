@@ -19,6 +19,7 @@ class ViewBindingActivity : AppCompatActivity() {
         binding = ActivityViewBindingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
         binding.formattedNumberWithFallback.text =
             viewModel.formattedNumberWithFallback.resolveString(this)
         binding.formattedNullNumberWithFallback.text =
