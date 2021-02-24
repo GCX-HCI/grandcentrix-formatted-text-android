@@ -15,7 +15,6 @@ class MyAwesomeViewModel {
         32.formatWithFallback(R.string.formatted_number, R.string.fallback)
     val formattedNullNumberWithFallback =
         nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)
-
     val valueWithFallback = 32.textIfNull(R.string.fallback)
     val nullValueWithFallback = nullInt.textIfNull(R.string.fallback)
 }

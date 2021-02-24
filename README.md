@@ -14,8 +14,8 @@ class MyAwesomeViewModel {
     
     var formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
     val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    val valueWithFallback = 32.ifNull(R.string.fallback)
-    val nullValueWithFallback = nullInt.ifNull(R.string.fallback) }  
+    val valueWithFallback = 32.textIfNull(R.string.fallback)
+    val nullValueWithFallback = textIfNull.ifNull(R.string.fallback) }  
 ``` 
 
 ### View binding
@@ -27,11 +27,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     setContentView(binding.root)    
     
     binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
-          
     binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
-          
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
-
     binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
 }
 ```
@@ -80,12 +77,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
             android:id="@+id/value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.valueWithFallback}" />
+            android:text="@{viewModel.valueWithFallback}" />
         <TextView
             android:id="@+id/null_value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.nullValueWithFallback}" />
+            android:text="@{viewModel.nullValueWithFallback}" />
     </LinearLayout>
 </layout>  
 ```
