@@ -1,8 +1,7 @@
-package net.grandcentrix.android.util.formatted_text
+package net.grandcentrix.android.formatted_text.sample
 
 import net.grandcentrix.android.formatted_text.formatWithFallback
-import net.grandcentrix.android.formatted_text.sample.R
-import net.grandcentrix.android.formatted_text.withFallback
+import net.grandcentrix.android.formatted_text.ifNull
 
 /**
  * A simple view model witch demonstrate the [FormattedText] and [FallbackValue].
@@ -15,6 +14,6 @@ class MyAwesomeViewModel {
     val formattedNullNumberWithFallback =
         nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)
 
-    val valueWithFallback = 32.withFallback(R.string.fallback)
-    val nullValueWithFallback = nullInt.withFallback(R.string.fallback)
+    val valueWithFallback = 32.ifNull(R.string.fallback)
+    val nullValueWithFallback = nullInt.ifNull(R.string.fallback)
 }

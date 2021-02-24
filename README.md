@@ -14,8 +14,8 @@ class MyAwesomeViewModel {
     
     var formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
     val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    val valueWithFallback = 32.withFallback(R.string.fallback)
-    val nullValueWithFallback = nullInt.withFallback(R.string.fallback) }  
+    val valueWithFallback = 32.ifNull(R.string.fallback)
+    val nullValueWithFallback = nullInt.ifNull(R.string.fallback) }  
 ``` 
 
 ### View binding
@@ -57,7 +57,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     <data>    
         <variable
             name="viewModel"
-            type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
+            type="net.grandcentrix.android.formatted_text.sample.MyAwesomeViewModel" />
 	</data>    
     
     <LinearLayout

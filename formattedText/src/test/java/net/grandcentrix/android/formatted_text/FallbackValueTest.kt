@@ -41,7 +41,7 @@ class FallbackValueTest {
 
     @Test
     fun `when use withFallback should create right object`() {
-        val withFallback = 32.withFallback(fallbackResId)
+        val withFallback = 32.ifNull(fallbackResId)
         val fallbackValue = FallbackValue(32, fallbackResId)
         assertEquals(fallbackValue, withFallback)
     }

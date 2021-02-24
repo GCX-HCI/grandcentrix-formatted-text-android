@@ -26,5 +26,5 @@ data class FallbackValue(val value: Any?, @StringRes val fallbackResId: Int) {
  * Creates a [FallbackValue] from the given value with [fallbackResId] as fallback.
  * @see [FallbackValue]
  */
-fun Any?.withFallback(@StringRes fallbackResId: Int) =
+fun Any?.ifNull(@StringRes fallbackResId: Int) =
     FallbackValue(value = this, fallbackResId = fallbackResId)
