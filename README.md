@@ -15,8 +15,8 @@ class MyAwesomeViewModel {
     val formattedNumber = 16.format(R.string.formatted_number)
     val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
     val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    val valueWithFallback = 32.withFallback(R.string.fallback)
-    val nullValueWithFallback = nullInt.withFallback(R.string.fallback) }  
+    val valueWithFallback = 32.textIfNull(R.string.fallback)
+    val nullValueWithFallback = textIfNull.ifNull(R.string.fallback) }  
 ``` 
 
 ### View binding
@@ -27,8 +27,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     binding = ActivityViewBindingBinding.inflate(layoutInflater)    
     setContentView(binding.root)    
     
-    binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
-    binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)          
+    binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
     binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
     binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
@@ -56,7 +55,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     <data>    
         <variable
             name="viewModel"
-            type="net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel" />
+            type="net.grandcentrix.android.formatted_text.sample.MyAwesomeViewModel" />
 	</data>    
     
     <LinearLayout
@@ -85,12 +84,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
             android:id="@+id/value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.valueWithFallback}" />
+            android:text="@{viewModel.valueWithFallback}" />
         <TextView
             android:id="@+id/null_value_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fallbackValue="@{viewModel.nullValueWithFallback}" />
+            android:text="@{viewModel.nullValueWithFallback}" />
     </LinearLayout>
 </layout>  
 ```
@@ -114,7 +113,7 @@ Note: Add your github user and token to your `~/.gradle/gradle.properties` file.
 And in your module `build.gradle`:    
     
 ```
-implementation("net.grandcentrix.formatted-text:android:1.0")
+implementation("net.grandcentrix.formatted-text:android:1.0.0")
 ```    
 
  For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/packages) page.

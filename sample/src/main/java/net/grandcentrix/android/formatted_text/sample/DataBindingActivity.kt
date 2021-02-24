@@ -3,7 +3,6 @@ package net.grandcentrix.android.formatted_text.sample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import net.grandcentrix.android.formatted_text.sample.databinding.ActivityDataBindingBinding
-import net.grandcentrix.android.util.formatted_text.MyAwesomeViewModel
 
 class DataBindingActivity : AppCompatActivity() {
 
