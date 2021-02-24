@@ -69,17 +69,17 @@ override fun onCreate(savedInstanceState: Bundle?) {
             android:id="@+id/formatted_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNumber}" />
+            android:text="@{viewModel.formattedNumber}" />
         <TextView
             android:id="@+id/formatted_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNumberWithFallback}" />
+            android:text="@{viewModel.formattedNumberWithFallback}" />
         <TextView
             android:id="@+id/formatted_null_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNullNumberWithFallback}" />
+            android:text="@{viewModel.formattedNullNumberWithFallback}" />
         <TextView
             android:id="@+id/value_with_fallback"
             android:layout_width="wrap_content"

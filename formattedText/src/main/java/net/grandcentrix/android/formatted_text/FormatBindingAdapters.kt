@@ -11,7 +11,7 @@ import androidx.databinding.BindingAdapter
  * @param formattedText the text witch should display
  * @see [FormattedText.resolveString]
  */
-@BindingAdapter("formattedText")
+@BindingAdapter("android:text")
 fun setFormattedText(textView: TextView, formattedText: FormattedText?) {
     textView.text = formattedText?.resolveString(textView.context)
 }
