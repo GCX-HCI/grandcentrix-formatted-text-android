@@ -9,22 +9,27 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/formatted_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.formattedNumber}" />
+
+        <TextView
             android:id="@+id/formatted_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNumberWithFallback}" />
+            android:text="@{viewModel.formattedNumberWithFallback}" />
 
         <TextView
             android:id="@+id/formatted_null_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNullNumberWithFallback}" />
+            android:text="@{viewModel.formattedNullNumberWithFallback}" />
 
         <TextView
             android:id="@+id/value_with_fallback"

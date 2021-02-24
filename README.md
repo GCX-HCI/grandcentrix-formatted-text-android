@@ -12,7 +12,8 @@ This library introduces a FormattingText and a FallbackValue to use language ind
 class MyAwesomeViewModel {    
     private val nullInt: Int? = null    
     
-    var formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
+    val formattedNumber = 16.format(R.string.formatted_number)
+    val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
     val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
     val valueWithFallback = 32.textIfNull(R.string.fallback)
     val nullValueWithFallback = textIfNull.ifNull(R.string.fallback) }  
@@ -26,7 +27,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     binding = ActivityViewBindingBinding.inflate(layoutInflater)    
     setContentView(binding.root)    
     
-    binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
+    binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
     binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
     binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
@@ -63,16 +64,22 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/formatted_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.formattedNumber}" />
         <TextView
             android:id="@+id/formatted_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNumberWithFallback}" />
+            android:text="@{viewModel.formattedNumberWithFallback}" />
         <TextView
             android:id="@+id/formatted_null_number_with_fallback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:formattedText="@{viewModel.formattedNullNumberWithFallback}" />
+            android:text="@{viewModel.formattedNullNumberWithFallback}" />
         <TextView
             android:id="@+id/value_with_fallback"
             android:layout_width="wrap_content"
