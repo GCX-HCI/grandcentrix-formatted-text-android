@@ -1,10 +1,9 @@
 package net.grandcentrix.android.formatted_text.sample
 
-import net.grandcentrix.android.formatted_text.formatWithFallback
-import net.grandcentrix.android.formatted_text.ifNull
+import net.grandcentrix.android.formatted_text.*
 
 /**
- * A simple view model witch demonstrate the [FormattedText] and [FallbackValue].
+ * A simple view model witch demonstrate the [FormattedText] and [NullFallbackText].
  */
 class MyAwesomeViewModel {
     private val nullInt: Int? = null

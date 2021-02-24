@@ -34,31 +34,31 @@ class BindingAdapterTest {
     }
 
     @Test
-    fun `when set fallback value with null should set text to null`() {
-        setFallbackValue(mockTextView, null)
+    fun `when set fallback text with null should set text to null`() {
+        setNullFallbackText(mockTextView, null)
         verify(exactly = 1) { mockTextView.text = null }
     }
 
     @Test
-    fun `when set fallback value should set value as text`() {
-        val fallbackValue = FallbackValue(32, fallbackId)
-        setFallbackValue(mockTextView, fallbackValue)
+    fun `when set fallback text should set value as text`() {
+        val fallbackValue = NullFallbackText(32, fallbackId)
+        setNullFallbackText(mockTextView, fallbackValue)
         verify(exactly = 1) { mockTextView.text = "32" }
     }
 
     @Test
-    fun `when set fallback value with null should set fallback as text `() {
+    fun `when set fallback text with null should set fallback as text `() {
         val nullInt: Int? = null
-        val fallbackValue = FallbackValue(nullInt, fallbackId)
-        setFallbackValue(mockTextView, fallbackValue)
+        val fallbackValue = NullFallbackText(nullInt, fallbackId)
+        setNullFallbackText(mockTextView, fallbackValue)
         verify(exactly = 1) { fallbackValue.resolveString(mockContext) }
         verify(exactly = 1) { mockTextView.text = fallbackText }
     }
 
     @Test
-    fun `when set fallback with blank text should set fallback as text`() {
-        val fallbackValue = FallbackValue(" ", fallbackId)
-        setFallbackValue(mockTextView, fallbackValue)
+    fun `when set fallback text with blank text should set fallback as text`() {
+        val fallbackValue = " ".nullIfBlank().textIfNull(fallbackId)
+        setNullFallbackText(mockTextView, fallbackValue)
         verify(exactly = 1) { mockTextView.text = fallbackText }
     }
 }
