@@ -11,28 +11,26 @@ import androidx.databinding.BindingAdapter
  * @param formattedText the text witch should display
  * @see [FormattedText.resolveString]
  */
-@BindingAdapter("formattedText")
+@BindingAdapter("android:text")
 fun setFormattedText(textView: TextView, formattedText: FormattedText?) {
     textView.text = formattedText?.resolveString(textView.context)
 }
 
 /**
  * If the method is called with null the text view's text is set with null.
- * Else the text is resolved by [FallbackValue.resolveString] and set as [TextView.setText].
- * Also if the [FallbackValue.value] is a [String] and [isBlank] the text [FallbackValue.fallbackResId] is set as text.
+ * Else the text is resolved by [NullFallbackText.resolveString] and set as [TextView.setText].
+ * Also if the [NullFallbackText.value] is a [String] and [isBlank] the text [NullFallbackText.fallbackResId] is set as text.
  *
  * @param textView the view which should display the text
- * @param fallbackValue the text witch should display
- * @see [FallbackValue.resolveString]
+ * @param nullFallbackText the text witch should display
+ * @see [NullFallbackText.resolveString]
  */
-@BindingAdapter("fallbackValue")
-fun setFallbackValue(textView: TextView, fallbackValue: FallbackValue?) {
-    if (fallbackValue == null) {
+@BindingAdapter("android:text")
+fun setNullFallbackText(textView: TextView, nullFallbackText: NullFallbackText?) {
+    if (nullFallbackText == null) {
         textView.text = null
-    } else if (fallbackValue.value is String && fallbackValue.value.isBlank()) {
-        textView.text = fallbackValue.copy(value = null).resolveString(textView.context)
     } else {
         textView.text =
-            fallbackValue.value?.toString() ?: fallbackValue.resolveString(textView.context)
+            nullFallbackText.value?.toString() ?: nullFallbackText.resolveString(textView.context)
     }
 }
