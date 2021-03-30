@@ -1,6 +1,6 @@
   
 # FormattedText & FallbackValue  
-  ![Publish Artifact](https://github.com/grandcentrix/android-formatted-text/workflows/Publish%20Artifact/badge.svg)    
+  ![Publish Artifact](https://github.com/GCX-HCI/grandcentrix-formatted-text-android/workflows/Publish%20Artifact/badge.svg)    
     
 This library introduces a FormattingText and a FallbackValue to use language independent texts in the application view models.     
     
@@ -116,4 +116,4 @@ And in your module `build.gradle`:
 implementation("net.grandcentrix.formatted-text:android:1.0.0")
 ```    
 
- For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/packages) page.
+ For the newest version please always check the [Packages](https://github.com/GCX-HCI/grandcentrix-formatted-text-android/packages) page.
