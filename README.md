@@ -12,11 +12,18 @@ This library introduces a FormattingText and a FallbackValue to use language ind
 class MyAwesomeViewModel {    
     private val nullInt: Int? = null    
     
+    // formatted text
     val formattedNumber = 16.format(R.string.formatted_number)
-    val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
+    val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)
+    val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)
+    // null fallback
     val valueWithFallback = 32.textIfNull(R.string.fallback)
-    val nullValueWithFallback = textIfNull.ifNull(R.string.fallback) }  
+    val nullValueWithFallback = nullInt.textIfNull(R.string.fallback)
+    // quantity
+    val quantityOne = 16.formatQuantity(R.plurals.formatted_plural, 1)
+    val quantityMany = 16.formatQuantity(R.plurals.formatted_plural, 2)
+    val quantityWithFallback = nullInt.formatQuantity(R.plurals.formatted_plural, 2, R.string.fallback)
+}
 ``` 
 
 ### View binding
@@ -26,11 +33,17 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)    
     binding = ActivityViewBindingBinding.inflate(layoutInflater)    
     setContentView(binding.root)    
-    
-    binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
-    binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)    
+    // formatted text
+    binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
+    binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
+    binding.formattedNullNumberWithFallback.text = viewModel.formattedNullNumberWithFallback.resolveString(this)
+    // fallback    
     binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
     binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
+    // quantity
+    binding.quantityValueOne.text = viewModel.quantityOne.resolveString(this)
+    binding.quantityValueMany.text = viewModel.quantityMany.resolveString(this)
+    binding.quantityValueWithFallback.text = viewModel.quantityWithFallback.resolveString(this)
 }
 ```
 
@@ -90,6 +103,21 @@ override fun onCreate(savedInstanceState: Bundle?) {
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.nullValueWithFallback}" />
+        <TextView
+            android:id="@+id/quantity_value_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityOne}" />
+        <TextView
+            android:id="@+id/quantity_value_many"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityMany}" />
+        <TextView
+            android:id="@+id/quantity_value_with_fallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityWithFallback}" />
     </LinearLayout>
 </layout>  
 ```

@@ -2,4 +2,8 @@
     <string name="app_name">sample</string>
     <string name="formatted_number">Number %d</string>
     <string name="fallback">I\'m the fallback.</string>
+    <plurals name="formatted_plural">
+        <item quantity="one">One %d</item>
+        <item quantity="other">Other %d</item>
+    </plurals>
 </resources>

@@ -18,12 +18,18 @@ class ViewBindingActivity : AppCompatActivity() {
         binding = ActivityViewBindingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // formatted text
         binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
         binding.formattedNumberWithFallback.text =
             viewModel.formattedNumberWithFallback.resolveString(this)
         binding.formattedNullNumberWithFallback.text =
             viewModel.formattedNullNumberWithFallback.resolveString(this)
+        // fallback
         binding.valueWithFallback.text = viewModel.valueWithFallback.resolveString(this)
         binding.nullValueWithFallback.text = viewModel.nullValueWithFallback.resolveString(this)
+        // quantity
+        binding.quantityValueOne.text = viewModel.quantityOne.resolveString(this)
+        binding.quantityValueMany.text = viewModel.quantityMany.resolveString(this)
+        binding.quantityValueWithFallback.text = viewModel.quantityWithFallback.resolveString(this)
     }
 }
