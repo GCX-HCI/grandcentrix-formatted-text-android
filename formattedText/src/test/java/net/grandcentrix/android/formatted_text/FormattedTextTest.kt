@@ -69,7 +69,7 @@ class FormattedTextTest {
 
     @Test
     fun `when value is not null should return formatted text`() {
-        val formattedText = text.formatWithFallback(resId, fallbackId)
+        val formattedText = text.format(resId, fallbackId)
         val expected = FormattedText(resId, text)
         assertEquals(expected, formattedText)
     }
@@ -77,7 +77,7 @@ class FormattedTextTest {
     @Test
     fun `when value is null should return fallback`() {
         val aString: String? = null
-        val formattedText = aString.formatWithFallback(resId, fallbackId)
+        val formattedText = aString.format(resId, fallbackId)
         val expected = FormattedText(fallbackId)
         assertEquals(expected, formattedText)
     }
