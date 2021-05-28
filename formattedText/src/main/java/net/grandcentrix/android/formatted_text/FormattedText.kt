@@ -54,8 +54,29 @@ class FormattedText(@StringRes val stringResId: Int, vararg val arguments: Any?)
  * @param stringResIfNull Resource id with should use if [this] is null.
  * @return The string data associated with the resource, formatted and
  *         stripped of styled text information.
+ * @see [FormattedText][format]
  */
+@Deprecated(
+    "use format instead",
+    ReplaceWith("format(@StringRes formatString: Int, @StringRes stringResIfNull: Int)")
+)
 fun Any?.formatWithFallback(@StringRes formatString: Int, @StringRes stringResIfNull: Int) =
+    when (this) {
+        null -> FormattedText(stringResIfNull)
+        else -> FormattedText(formatString, this)
+    }
+
+/**
+ * Returns a localized formatted string from the application's package's
+ * default string table, substituting the format arguments as defined in
+ * {@link java.util.Formatter} and {@link java.lang.String#format}.
+ *
+ * @param formatString Resource id for the format string
+ * @param stringResIfNull Resource id with should use if [this] is null.
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Any?.format(@StringRes formatString: Int, @StringRes stringResIfNull: Int) =
     when (this) {
         null -> FormattedText(stringResIfNull)
         else -> FormattedText(formatString, this)

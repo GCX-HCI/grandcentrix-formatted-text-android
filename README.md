@@ -13,8 +13,8 @@ class MyAwesomeViewModel {
     private val nullInt: Int? = null    
     
     val formattedNumber = 16.format(R.string.formatted_number)
-    val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)    
-    val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)    
+    val formattedNumberWithFallback = 32.format(R.string.formatted_number, R.string.fallback)    
+    val formattedNullNumberWithFallback = nullInt.format(R.string.formatted_number, R.string.fallback)    
     val valueWithFallback = 32.textIfNull(R.string.fallback)
     val nullValueWithFallback = textIfNull.ifNull(R.string.fallback) }  
 ``` 
