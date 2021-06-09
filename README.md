@@ -1,6 +1,6 @@
   
 # FormattedText & FallbackValue  
-  ![Publish Artifact](https://github.com/grandcentrix/android-formatted-text/workflows/Publish%20Artifact/badge.svg)    
+  ![Publish Artifact](https://github.com/GCX-HCI/grandcentrix-formatted-text-android/workflows/Publish%20Artifact/badge.svg)    
     
 This library introduces a FormattingText and a FallbackValue to use language independent texts in the application view models.     
     
@@ -14,8 +14,8 @@ class MyAwesomeViewModel {
     
     // formatted text
     val formattedNumber = 16.format(R.string.formatted_number)
-    val formattedNumberWithFallback = 32.formatWithFallback(R.string.formatted_number, R.string.fallback)
-    val formattedNullNumberWithFallback = nullInt.formatWithFallback(R.string.formatted_number, R.string.fallback)
+    val formattedNumberWithFallback = 32.format(R.string.formatted_number, R.string.fallback)
+    val formattedNullNumberWithFallback = nullInt.format(R.string.formatted_number, R.string.fallback)
     // null fallback
     val valueWithFallback = 32.textIfNull(R.string.fallback)
     val nullValueWithFallback = nullInt.textIfNull(R.string.fallback)
@@ -129,7 +129,7 @@ The library is available on GitHub Packages.
 In your project main `build.gradle` you need:    
 ```
 maven {
-    url 'https://maven.pkg.github.com/grandcentrix/android-formatted-text'
+    url 'https://maven.pkg.github.com/GCX-HCI/grandcentrix-formatted-text-android/'
     credentials {
         username = project.findProperty("github.user") ?: System.getenv("GITHUB_ACTOR")
         password = project.findProperty("github.token") ?: System.getenv("GITHUB_TOKEN")
@@ -144,4 +144,4 @@ And in your module `build.gradle`:
 implementation("net.grandcentrix.formatted-text:android:1.0.0")
 ```    
 
- For the newest version please always check the [Packages](https://github.com/grandcentrix/android-formatted-text/packages) page.
+ For the newest version please always check the [Packages](https://github.com/GCX-HCI/grandcentrix-formatted-text-android/packages) page.
