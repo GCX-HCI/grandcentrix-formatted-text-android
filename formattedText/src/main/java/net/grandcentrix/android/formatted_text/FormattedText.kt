@@ -69,11 +69,8 @@ class FormattedText : Serializable {
     }
 
     override fun toString(): String {
-        return "${this::class.java.simpleName}(string = $stringResId, arguments = ${
-            arguments.joinToString(
-                separator = ","
-            )
-        })"
+        return "${this::class.java.simpleName}(string = $stringResId, " +
+                "arguments = ${arguments.joinToString(separator = ",")})"
     }
 }
 
@@ -140,11 +137,10 @@ fun Any?.formatQuantity(
     @PluralsRes pluralsRes: Int,
     quantity: Int,
     @StringRes stringResIfNull: Int
-) =
-    when (this) {
-        null -> FormattedText(stringResIfNull)
-        else -> FormattedText(pluralsRes, quantity, this)
-    }
+) = when (this) {
+    null -> FormattedText(stringResIfNull)
+    else -> FormattedText(pluralsRes, quantity, this)
+}
 
 /**
  * Returns a localized formatted string from the application's package's
