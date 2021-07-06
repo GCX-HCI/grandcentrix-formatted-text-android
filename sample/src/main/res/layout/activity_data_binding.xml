@@ -42,5 +42,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.nullValueWithFallback}" />
+
+        <TextView
+            android:id="@+id/quantity_value_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityOne}" />
+
+        <TextView
+            android:id="@+id/quantity_value_many"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityMany}" />
+
+        <TextView
+            android:id="@+id/quantity_value_with_fallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.quantityWithFallback}" />
     </LinearLayout>
 </layout>
