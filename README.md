@@ -12,6 +12,8 @@ This library introduces a FormattingText and a FallbackValue to use language ind
 class MyAwesomeViewModel {    
     private val nullInt: Int? = null    
     
+    // not formatted text
+    val notFormatted = FormattedText(R.string.not_formatted)
     // formatted text
     val formattedNumber = 16.format(R.string.formatted_number)
     val formattedNumberWithFallback = 32.format(R.string.formatted_number, R.string.fallback)
@@ -32,7 +34,9 @@ class MyAwesomeViewModel {
 override fun onCreate(savedInstanceState: Bundle?) {    
     super.onCreate(savedInstanceState)    
     binding = ActivityViewBindingBinding.inflate(layoutInflater)    
-    setContentView(binding.root)    
+    setContentView(binding.root)
+    // not formatted text
+    binding.notFormatted.text = viewModel.notFormatted.resolveString(this)
     // formatted text
     binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
     binding.formattedNumberWithFallback.text = viewModel.formattedNumberWithFallback.resolveString(this)    
@@ -77,6 +81,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/not_formatted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.notFormatted}" />
         
         <TextView
             android:id="@+id/formatted_number"

@@ -14,6 +14,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/not_formatted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.notFormatted}" />
+
+        <TextView
             android:id="@+id/formatted_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

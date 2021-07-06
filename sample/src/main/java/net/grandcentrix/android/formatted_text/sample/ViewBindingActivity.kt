@@ -18,6 +18,8 @@ class ViewBindingActivity : AppCompatActivity() {
         binding = ActivityViewBindingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // not formatted text
+        binding.notFormatted.text = viewModel.notFormatted.resolveString(this)
         // formatted text
         binding.formattedNumber.text = viewModel.formattedNumber.resolveString(this)
         binding.formattedNumberWithFallback.text =
